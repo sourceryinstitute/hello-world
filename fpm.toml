@@ -1,0 +1,6 @@
+name = "hello"
+version = "0.1.0"
+license = "license"
+author = "Damian Rouson"
+maintainer = "damian@archaeologic.codes"
+copyright = "Copyright 2022, Damian Rouson"
