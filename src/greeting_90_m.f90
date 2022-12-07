@@ -5,7 +5,7 @@ module greeting_90_m
   implicit none
 
   private
-  public :: greeting_t, operator(+)
+  public :: greeting_t, operator(//)
 
   integer, parameter :: max_length = 32
 
@@ -13,7 +13,7 @@ module greeting_90_m
     character(len=max_length) string
   end type
 
-  interface operator(+)
+  interface operator(//)
     module procedure concatenate
   end interface
 

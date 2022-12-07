@@ -9,7 +9,7 @@ module greeting_2003_m
     character(len=:), allocatable :: string_
   contains
     procedure, private :: concatenate
-    generic :: operator(+) => concatenate
+    generic :: operator(//) => concatenate
   end type
 
   interface greeting_t
