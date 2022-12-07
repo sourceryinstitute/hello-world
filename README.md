@@ -1,20 +1,37 @@
 A Hello World Retrospective
 ===========================
 
-This repository contains versions of hello world that demonstrate 
+This repository contains versions of "Hello, world!" that demonstrate 
 some of the features introduced by several Fortran standards:
 
-# Fortran 90
+Demonstration codes
+-------------------
 
-  * [main_90](./app/main_90.f90)
-  * [hello_90_m](./app/hello_90_m.f90)
+### Fortran 90
+Demonstrations of features introduced in Fortarn 90:
 
-# Fortran 2003
+  * [hello_90.f90](./app/hello_90.f90)
+  * [string_90_m.f90](./src/string_90_m.f90)
 
-  * [main_2003](./app/main_2003.f90)
-  * [greeting_2003_m](./app/greeting_2003_m.f90)
+### Fortran 2003
+Demonstrations of features introduced in Fortarn 95 and 2003:
 
-# Fortran 2018
+  * [hello_2003.f90](./app/hello_2003.f90)
+  * [string_2003_m.f90](./src/string_2003_m.f90)
 
-  * [main_2018](./app/main_2018.f90)
-  * [greeting_2018](./app/greeting_2018.f90)
+### Fortran 2018
+Demonstrations of features introduced in Fortarn 2008 and 2018:
+
+  * [hello_2018.f90](./app/hello_2018.f90)
+  * [string_2018_m.f90](./src/string_2018_m.f90)
+  * [string_202018_s.f90](./src/string_2018_s.f90)
+
+Downloaing, Building, and Running
+---------------------------------
+With `gfortran` and OpenCoarrays installed, execute the following
+at a command line in Linux, macOS, or Windows Subsystem for Linux:
+```
+fpm run hello_90
+fpm run hello_2003
+fpm run hello_2018 --compiler caf --runner "cafrun -n 2"
+```
