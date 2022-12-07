@@ -1,28 +1,28 @@
-module greeting_90_m
+module string_90_m
   !! Demonstrate features that were introduced by Fortran 90, including
   !! modules, private scoping, derived types, generic interfaces,
   !! defined operators, argument intent, trim intrinsic function
   implicit none
 
   private
-  public :: greeting_t, operator(+)
+  public :: string_t, operator(//)
 
-  integer, parameter :: max_length = 32
+  integer, parameter :: max_length = 16 
 
-  type greeting_t
-    character(len=max_length) string
+  type string_t
+    character(len=max_length) string_
   end type
 
-  interface operator(+)
+  interface operator(//)
     module procedure concatenate
   end interface
 
 contains
   
   function concatenate(lhs, rhs) result(lhs_rhs)
-    type(greeting_t), intent(in) :: lhs, rhs
-    type(greeting_t) lhs_rhs
-    lhs_rhs%string = trim(lhs%string) // trim(rhs%string)
+    type(string_t), intent(in) :: lhs, rhs
+    type(string_t) lhs_rhs
+    lhs_rhs%string_ = trim(lhs%string_) // trim(rhs%string_)
   end function
 
-end module greeting_90_m
+end module string_90_m
