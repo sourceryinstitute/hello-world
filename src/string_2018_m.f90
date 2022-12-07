@@ -1,11 +1,11 @@
 module string_2018_m
   implicit none
 
-  private
+  !private
   public :: string_t
 
   type string_t
-    private
+    !private
     character(len=:), allocatable :: string_
   contains
     procedure :: string

@@ -1,12 +1,22 @@
 program hello_2018
-  use iso_fortran_env, only : output_unit
   use string_2018_m, only : string_t
   implicit none
-  type(string_t), allocatable :: greeting(:)
+  type(string_t) greeting
+  character(len=32) message[*]
+  integer, parameter :: num_digits=12
+  character(len=num_digits) image_number
   integer i
-  greeting = [string_t("Hello"), string_t(",") // string_t(" "), string_t("world!")]
-  do i=1,size(greeting)
-    write(fmt='(a)',unit=output_unit, advance='no')  greeting(i)%string()
-  end do
-  print *
+
+  associate(me => this_image())
+    write(image_number,*) this_image()
+    greeting = string_t("Hello from image" // image_number)
+    message  = greeting%string()
+    sync all
+    if (me==1) then
+      do i=1,num_images()
+        print *,message[i]
+      end do
+    end if
+  end associate
+
 end program
