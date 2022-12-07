@@ -13,7 +13,7 @@ program hello_2018
     message  = greeting%string()
     sync all
     if (me==1) then
-      do i=1,num_images()
+      do concurrent(i=1:num_images())
         print *,message[i]
       end do
     end if
