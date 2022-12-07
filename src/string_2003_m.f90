@@ -8,27 +8,33 @@ module string_2003_m
     private
     character(len=:), allocatable :: string_
   contains
+    procedure :: string
     procedure, private :: concatenate
     generic :: operator(//) => concatenate
   end type
 
   interface string_t
-    module procedure constructor
+    module procedure construct
   end interface
 
 contains
   
-  pure function concatenate(lhs, rhs) result(lhs_rhs)
-    class(string_t), intent(in) :: lhs
-    type(string_t), intent(in) :: rhs
-    character(len=:), allocatable :: lhs_rhs
-    lhs_rhs = trim(lhs%string_) // trim(rhs%string_)
+  pure function construct(string) result(new_string_t)
+    character(len=*), intent(in) :: string
+    type(string_t) new_string_t
+    new_string_t%string_ = string 
   end function
 
-  pure function constructor(characters) result(string)
-    character(len=*), intent(in) :: characters
-    type(string_t) string
-    string%string_ = characters
+  pure function concatenate(lhs, rhs) result(lhs_rhs)
+    class(string_t), intent(in) :: lhs, rhs
+    type(string_t) lhs_rhs
+    lhs_rhs = string_t(lhs%string_ // rhs%string_)
+  end function
+
+  pure function string(self) result(self_string)
+    class(string_t), intent(in) :: self
+    character(len=:), allocatable :: self_string
+    self_string = self%string_
   end function
 
 end module string_2003_m
