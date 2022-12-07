@@ -7,10 +7,10 @@ module string_90_m
   private
   public :: string_t, operator(//)
 
-  integer, parameter :: max_length = 32
+  integer, parameter :: max_length = 16 
 
   type string_t
-    character(len=max_length) string
+    character(len=max_length) string_
   end type
 
   interface operator(//)
@@ -22,7 +22,7 @@ contains
   function concatenate(lhs, rhs) result(lhs_rhs)
     type(string_t), intent(in) :: lhs, rhs
     type(string_t) lhs_rhs
-    lhs_rhs%string = trim(lhs%string) // trim(rhs%string)
+    lhs_rhs%string_ = trim(lhs%string_) // trim(rhs%string_)
   end function
 
 end module string_90_m
